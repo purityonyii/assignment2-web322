@@ -1,4 +1,4 @@
-// models/mealkitsData.js  (Rita - static mealkits for now)
+
 
 const mealkits = [
   {
@@ -9,7 +9,6 @@ const mealkits = [
     price: 19.99,
     cookingTime: 40,
     servings: 2,
-    // use file that exists: public/images/jollof-rice.jpg
     imageUrl: "/images/jollof-rice.jpg",
     featuredMealKit: true
   },
@@ -21,7 +20,6 @@ const mealkits = [
     price: 17.49,
     cookingTime: 35,
     servings: 2,
-    // use file that exists: public/images/porridge-yam.jpg
     imageUrl: "/images/porridge-yam.jpg",
     featuredMealKit: true
   },
@@ -33,7 +31,7 @@ const mealkits = [
     price: 20.99,
     cookingTime: 30,
     servings: 2,
-    // TODO: add this file to /public/images or change name
+   
     imageUrl: "/images/shrimpfriedrice.jpg",
     featuredMealKit: false
   },
@@ -45,7 +43,7 @@ const mealkits = [
     price: 18.99,
     cookingTime: 35,
     servings: 2,
-    // TODO: add this file to /public/images or change name
+    
     imageUrl: "/images/jollof-spaghetti.jpg",
     featuredMealKit: true
   },
@@ -57,7 +55,7 @@ const mealkits = [
     price: 18.99,
     cookingTime: 45,
     servings: 2,
-    // TODO: add this file to /public/images or change name
+    
     imageUrl: "/images/breadfruit.jpg",
     featuredMealKit: false
   },
@@ -69,7 +67,6 @@ const mealkits = [
     price: 21.99,
     cookingTime: 25,
     servings: 2,
-    // TODO: add this file to /public/images or change name
     imageUrl: "/images/spicy-beef-suya.jpg",
     featuredMealKit: true
   },
@@ -81,7 +78,6 @@ const mealkits = [
     price: 22.49,
     cookingTime: 50,
     servings: 2,
-    // TODO: add this file to /public/images or change name
     imageUrl: "/images/egusi-soup.jpg",
     featuredMealKit: false
   },
@@ -93,24 +89,24 @@ const mealkits = [
     price: 24.99,
     cookingTime: 60,
     servings: 2,
-    // use file that exists: public/images/isi-ewu.jpg
+    
     imageUrl: "/images/isi-ewu.jpg",
     featuredMealKit: true
   }
 ];
 
-// return all
+
 module.exports.getAllMealKits = function () {
   return mealkits;
 };
 
-// only featured
+
 module.exports.getFeaturedMealKits = function (kits) {
   const arr = Array.isArray(kits) ? kits : [];
   return arr.filter(k => k.featuredMealKit === true);
 };
 
-// group by category -> [{ title: "Classic Meals", mealKits: [...] }, ...]
+
 module.exports.getMealKitsByCategory = function (kits) {
   const arr = Array.isArray(kits) ? kits : [];
   const grouped = {};
@@ -123,7 +119,7 @@ module.exports.getMealKitsByCategory = function (kits) {
 
   const out = [];
   for (const catName in grouped) {
-    out.push({ title: catName, mealKits: grouped[catName] }); // note: title (not categoryName)
+    out.push({ title: catName, mealKits: grouped[catName] });
   }
   return out;
 };

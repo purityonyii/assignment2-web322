@@ -1,4 +1,4 @@
-// models/mealkitsData.js  (Rita - simple data + helpers)
+
 
 function getAllMealKits() {
   return [
