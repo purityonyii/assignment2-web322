@@ -1,0 +1,37 @@
+<section class="row justify-content-center">
+  <div class="col-lg-6">
+    <h1 class="mb-3"><%= title %></h1>
+
+    <% if (errors && Object.keys(errors).length) { %>
+      <div class="alert alert-danger">
+        <% Object.values(errors).forEach(msg => { %>
+          <div><%= msg %></div>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <form action="/sign-up" method="post" class="card p-3 shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input class="form-control" type="text" name="firstName" value="<%= (values && values.firstName) || '' %>">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input class="form-control" type="text" name="lastName" value="<%= (values && values.lastName) || '' %>">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email (text)</label>
+        <input class="form-control" type="text" name="email" value="<%= (values && values.email) || '' %>">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password (8–12, Aa1!)</label>
+        <input class="form-control" type="password" name="password">
+      </div>
+
+      <button class="btn btn-primary">Create Account</button>
+    </form>
+  </div>
+</section>

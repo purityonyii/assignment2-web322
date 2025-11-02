@@ -1,0 +1,20 @@
+<section class="container py-3">
+    <h1>Meal Kit List (Clerk)</h1>
+    <p>All kits listed below:</p>
+
+    <% if (kits && kits.length > 0) { %>
+        <ul class="list-group">
+            <% kits.forEach(item => { %>
+                <li class="list-group-item">
+                    <strong><%= item.title %></strong>
+                    — <%= item.category %>
+                    — $<%= item.price.toFixed(2) %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <div class="alert alert-info mt-3">
+            No meal kits to show.
+        </div>
+    <% } %>
+</section>

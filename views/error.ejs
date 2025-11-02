@@ -1,0 +1,25 @@
+<section class="error-page container my-4">
+  <%
+    // Rita - safe defaults
+    const status = (typeof code !== 'undefined')
+      ? code
+      : (typeof statusCode !== 'undefined' ? statusCode : 500);
+
+    const msg = (typeof message !== 'undefined' && message)
+      ? message
+      : 'Something went wrong.';
+
+    const heading = (typeof title !== 'undefined' && title)
+      ? title
+      : `Error ${status}`;
+  %>
+
+  <div class="alert alert-danger shadow-sm">
+    <h1 class="h4 mb-2"><%= heading %></h1>
+    <p class="mb-0"><%= msg %></p>
+  </div>
+
+  <p class="mt-3">
+    <a class="btn btn-primary" href="/">Go Back Home</a>
+  </p>
+</section>

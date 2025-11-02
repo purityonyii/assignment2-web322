@@ -1,0 +1,49 @@
+<% /* Rita - login page */ %>
+
+<section class="auth">
+
+    <h1>Log In</h1>
+
+    <% if (errors && errors.form) { %>
+        <p class="error"><%= errors.form %></p>
+    <% } %>
+
+    <form action="/log-in" method="POST">
+
+        <label>Email:</label><br>
+        <input type="text"
+               name="email"
+               value="<%= values && values.email ? values.email : '' %>">
+        <% if (errors && errors.email) { %>
+            <span class="error"><%= errors.email %></span>
+        <% } %>
+        <br><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password">
+        <% if (errors && errors.password) { %>
+            <span class="error"><%= errors.password %></span>
+        <% } %>
+        <br><br>
+
+        <label>User Type:</label><br>
+        <label>
+            <input type="radio" name="role" value="customer"
+                <%= (values && values.role === 'customer') ? 'checked' : '' %>>
+            Customer
+        </label><br>
+
+        <label>
+            <input type="radio" name="role" value="clerk"
+                <%= (values && values.role === 'clerk') ? 'checked' : '' %>>
+            Data Entry Clerk
+        </label>
+        <% if (errors && errors.role) { %>
+            <span class="error"><%= errors.role %></span>
+        <% } %>
+
+        <br><br>
+        <button type="submit">Log In</button>
+
+    </form>
+</section>

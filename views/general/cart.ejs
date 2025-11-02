@@ -1,0 +1,12 @@
+<section class="container py-4">
+  <h1 class="mb-3">Shopping Cart</h1>
+
+  <% if (typeof user !== "undefined" && user) { %>
+    <p class="lead">Welcome, <strong><%= user.name %></strong>!</p>
+  <% } %>
+
+  <div class="alert alert-info">
+    Items that you add to your cart will appear here in Assignment 3.
+    For now, enjoy browsing our delicious meal kits!
+  </div>
+</section>

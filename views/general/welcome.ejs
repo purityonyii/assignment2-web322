@@ -1,0 +1,36 @@
+<section class="container py-4">
+
+  <h1 class="mb-3">Welcome!</h1>
+
+  <p class="lead">
+    Thank you for registering on our website. Feel free to explore our delicious meal kits below!
+  </p>
+
+  <hr />
+
+  <% if (mealkits && mealkits.length > 0) { %>
+
+    <h2 class="mt-4">Popular Meal Kits</h2>
+
+    <ul class="list-group my-3">
+      <% mealkits.forEach(kit => { %>
+        <li class="list-group-item d-flex justify-content-between">
+          <span><%= kit.title %></span>
+          <span>$<%= kit.price.toFixed(2) %></span>
+        </li>
+      <% }) %>
+    </ul>
+
+  <% } else { %>
+
+    <div class="alert alert-info mt-4">
+      No meal kits found at this time. Please check again later.
+    </div>
+
+  <% } %>
+
+  <div class="mt-4">
+    <a href="/mealkits" class="btn btn-primary">Browse All Meal Kits</a>
+  </div>
+
+</section>

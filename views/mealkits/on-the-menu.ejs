@@ -1,0 +1,60 @@
+<section class="menu-container container py-3">
+  <h1 class="mb-3">On The Menu</h1>
+
+  <%
+    // Rita - I normalize the input a bit
+    // I accept either: groups = [{ title, mealKits }] OR grouped = { cat: [] }
+    let _groups = [];
+    if (typeof groups !== 'undefined' && Array.isArray(groups)) {
+      _groups = groups;
+    } else if (typeof grouped !== 'undefined' && grouped && !Array.isArray(grouped)) {
+      _groups = Object.keys(grouped).map(cat => ({ title: cat, mealKits: grouped[cat] }));
+    }
+  %>
+
+  <% if (_groups.length === 0) { %>
+    <div class="alert alert-info">No meal kits to show.</div>
+  <% } else { %>
+    <% _groups.forEach(g => { %>
+      <h2 class="menu-category h4 mt-4 mb-3"><%= g.title %></h2>
+
+      <!-- Bootstrap responsive grid -->
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+        <% (g.mealKits || []).forEach(item => { %>
+          <div class="col">
+            <div class="menu-card card h-100 shadow-sm">
+              <% // image (fallback if empty) %>
+              <img class="menu-img card-img-top"
+                   src="<%= item.imageUrl || '/images/placeholder.jpg' %>"
+                   alt="<%= item.title || 'meal kit' %>">
+
+              <div class="card-body d-flex flex-column">
+                <h3 class="h6 card-title mb-1"><%= item.title %></h3>
+
+                <% if (item.includes) { %>
+                  <div class="includes text-muted small mb-2"><%= item.includes %></div>
+                <% } %>
+
+                <% if (item.description) { %>
+                  <p class="desc small mb-2"><%= item.description %></p>
+                <% } %>
+
+                <p class="meta text-muted small mb-2">
+                  <% if (item.cookingTime) { %><span><%= item.cookingTime %> mins</span><% } %>
+                  <% if (item.servings) { %><span> • serves <%= item.servings %></span><% } %>
+                </p>
+
+                <p class="price fw-bold mt-auto mb-0">
+                  $<%= (typeof item.price === 'number' && item.price.toFixed) ? item.price.toFixed(2) : item.price %>
+                </p>
+
+                <!-- future feature button (disabled now) -->
+                <a class="btn btn-primary w-100 mt-2 disabled" aria-disabled="true">Add to Cart (later)</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% }) %>
+  <% } %>
+</section>
