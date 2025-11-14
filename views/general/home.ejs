@@ -1,10 +1,10 @@
 <section class="container py-4">
-  <h1>Welcome to My Meal Kit Store</h1>
+  <h1>Welcome to RITA'SMEALKIT</h1>
   <p>This is the home page. You can check available meal kits and sign up for an account.</p>
   <hr/>
 
   <%
-    // Rita - safe fallback to avoid crash if controller didn't pass data
+    
     const kits = (typeof mealkits !== 'undefined' && Array.isArray(mealkits))
       ? mealkits
       : [];
@@ -13,9 +13,9 @@
   <% if (kits.length > 0) { %>
     <ul class="list-group my-3">
       <% kits.forEach(kit => { %>
-        <li class="list-group-item d-flex justify-content-between">
-          <span><%= kit.title || kit.name %></span>
-          <span>$<%= Number(kit.price).toFixed(2) %></span>
+  <li class="list-group-item d-flex justify-content-between">
+       <span><%= kit.title || kit.name %></span>
+    <span>$<%= Number(kit.price).toFixed(2) %></span>
         </li>
       <% }) %>
     </ul>

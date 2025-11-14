@@ -1,6 +1,11 @@
-// name: onyinyechi rita ngaokere
-// email: orngaokere@myseneca.ca
-// date: november 2025
+// declare that this assignment is my own work in accordance with Seneca Academic Policy.
+// No part of this assignment has been copied manually or electronically from any other source
+// (including web sites) or distributed to other students.// i got a little idea from ai because i was getting errors
+//and i took most of my code from my assignment1
+  //Name: Ngaokere Onyinyechi Rita
+ //Student ID: 173949231
+// Date: 2025-10-05
+//  Course/Section: WEB322
 
 // here i load all the things i need
 require("dotenv").config();
