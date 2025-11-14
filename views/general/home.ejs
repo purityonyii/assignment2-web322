@@ -1,27 +1,105 @@
-<section class="container py-4">
-  <h1>Welcome to RITA'SMEALKIT</h1>
-  <p>This is the home page. You can check available meal kits and sign up for an account.</p>
-  <hr/>
+<main style="background-color:#0f172a; color:#e5e7eb; min-height:80vh; padding-bottom:40px;">
 
-  <%
-    
-    const kits = (typeof mealkits !== 'undefined' && Array.isArray(mealkits))
-      ? mealkits
-      : [];
-  %>
+  <!-- here i show my hero section like assignment 1 -->
+  <section class="p-4 p-md-5 mb-4 rounded-3"
+    style="background-color:#111827; color:#e5e7eb;">
+    <div class="container py-3">
+      <div class="row align-items-center gy-3">
+        <div class="col-12 col-md-6">
+          <h2 class="display-6 mb-3" style="color:#22c55e;">
+            Fresh Meal Kits, Fast Cooking
+          </h2>
+          <p class="lead">
+            Cook chef-designed meals at home with pre-portioned ingredients from RitasFoodMart.
+          </p>
 
-  <% if (kits.length > 0) { %>
-    <ul class="list-group my-3">
-      <% kits.forEach(kit => { %>
-  <li class="list-group-item d-flex justify-content-between">
-       <span><%= kit.title || kit.name %></span>
-    <span>$<%= Number(kit.price).toFixed(2) %></span>
-        </li>
-      <% }) %>
-    </ul>
-  <% } else { %>
-    <div class="alert alert-info mt-3">
-      Browse our menu to see what's cooking!
+          <!-- here i send user to the mealkits page for assignment 2 -->
+          <a href="/mealkits"
+             class="btn btn-primary btn-lg mt-2"
+             style="background-color:#22c55e; border:none; color:#0f172a; font-weight:bold;">
+            Explore Menu
+          </a>
+        </div>
+
+        <div class="col-12 col-md-6 text-center">
+          <img src="/assets/images/hero.jpg"
+               alt="RitasFoodMart hero"
+               class="img-fluid rounded">
+        </div>
+      </div>
     </div>
-  <% } %>
-</section>
+  </section>
+
+  <!-- here i show the 4 small info boxes like assignment 1 -->
+  <section class="container mb-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="h-100 p-3 rounded border"
+             style="border:1px solid #22c55e; background-color:#020617;">
+          <h6 style="color:#22c55e;">Quality Ingredients</h6>
+          <p style="color:#cbd5e1;">Fresh, locally-sourced when possible.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="h-100 p-3 rounded border"
+             style="border:1px solid #22c55e; background-color:#020617;">
+          <h6 style="color:#22c55e;">Fast Recipes</h6>
+          <p style="color:#cbd5e1;">Most meals in 30 minutes or less.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="h-100 p-3 rounded border"
+             style="border:1px solid #22c55e; background-color:#020617;">
+          <h6 style="color:#22c55e;">Flexible Plans</h6>
+          <p style="color:#cbd5e1;">Pick servings and delivery pace.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="h-100 p-3 rounded border"
+             style="border:1px solid #22c55e; background-color:#020617;">
+          <h6 style="color:#22c55e;">No Waste</h6>
+          <p style="color:#cbd5e1;">Pre-portioned ingredients reduce waste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- here i use my assignment 2 mealkits data but inside the new design -->
+  <section class="container mb-5">
+    <h2 class="h4 mb-3" style="color:#22c55e;">
+      Welcome to RITA'S MEALKIT
+    </h2>
+    <p style="color:#cbd5e1;">
+      This is the home page. You can check available meal kits and sign up for an account.
+    </p>
+    <hr style="border-color:#1f2937;">
+
+    <%
+      // here i make sure mealkits is an array so it does not crash
+      const kits = (typeof mealkits !== 'undefined' && Array.isArray(mealkits))
+        ? mealkits
+        : [];
+    %>
+
+    <% if (kits.length > 0) { %>
+      <ul class="list-group my-3">
+        <% kits.forEach(kit => { %>
+          <li class="list-group-item d-flex justify-content-between"
+              style="background-color:#020617; color:#e5e7eb; border-color:#1f2937;">
+            <span><%= kit.title || kit.name %></span>
+            <span>$<%= Number(kit.price).toFixed(2) %></span>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <div class="alert alert-info mt-3"
+           style="background-color:#0ea5e9; color:#0f172a; border:none;">
+        Browse our menu to see what's cooking!
+      </div>
+    <% } %>
+  </section>
+
+</main>

@@ -1,37 +1,99 @@
-<section class="row justify-content-center">
-  <div class="col-lg-6">
-    <h1 class="mb-3"><%= title %></h1>
+<% /* Rita - simple sign up page with my dark colours (A2) */ %>
 
+<body style="background-color:#0f172a; color:#e5e7eb; padding:30px;">
+
+  <div style="
+      max-width:520px;
+      margin:auto;
+      background-color:#111827;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 5px 12px rgba(0,0,0,0.4);
+      border:1px solid #22c55e;
+    ">
+
+    <h1 style="text-align:center; color:#22c55e; margin-bottom:20px;">
+      <%= title || "Create Your Account" %>
+    </h1>
+
+    <!-- show top error box if there are any errors -->
     <% if (errors && Object.keys(errors).length) { %>
-      <div class="alert alert-danger">
+      <div style="background-color:#7f1d1d; padding:10px; border-radius:6px; margin-bottom:15px;">
         <% Object.values(errors).forEach(msg => { %>
           <div><%= msg %></div>
         <% }) %>
       </div>
     <% } %>
 
-    <form action="/sign-up" method="post" class="card p-3 shadow-sm">
-      <div class="mb-3">
-        <label class="form-label">First Name</label>
-        <input class="form-control" type="text" name="firstName" value="<%= (values && values.firstName) || '' %>">
-      </div>
+    <form action="/sign-up" method="post">
 
-      <div class="mb-3">
-        <label class="form-label">Last Name</label>
-        <input class="form-control" type="text" name="lastName" value="<%= (values && values.lastName) || '' %>">
-      </div>
+      <!-- first name -->
+      <label>First Name</label><br>
+      <input
+        type="text"
+        name="firstName"
+        value="<%= (values && values.firstName) ? values.firstName : '' %>"
+        style="width:100%; padding:10px; margin-top:5px; margin-bottom:10px;
+               border-radius:5px; border:none;">
+      <% if (errors && errors.firstName) { %>
+        <span style="color:#fca5a5;"><%= errors.firstName %></span>
+      <% } %>
+      <br><br>
 
-      <div class="mb-3">
-        <label class="form-label">Email (text)</label>
-        <input class="form-control" type="text" name="email" value="<%= (values && values.email) || '' %>">
-      </div>
+      <!-- last name -->
+      <label>Last Name</label><br>
+      <input
+        type="text"
+        name="lastName"
+        value="<%= (values && values.lastName) ? values.lastName : '' %>"
+        style="width:100%; padding:10px; margin-top:5px; margin-bottom:10px;
+               border-radius:5px; border:none;">
+      <% if (errors && errors.lastName) { %>
+        <span style="color:#fca5a5;"><%= errors.lastName %></span>
+      <% } %>
+      <br><br>
 
-      <div class="mb-3">
-        <label class="form-label">Password (8–12, Aa1!)</label>
-        <input class="form-control" type="password" name="password">
-      </div>
+      <!-- email -->
+      <label>Email</label><br>
+      <input
+        type="text"
+        name="email"
+        value="<%= (values && values.email) ? values.email : '' %>"
+        style="width:100%; padding:10px; margin-top:5px; margin-bottom:10px;
+               border-radius:5px; border:none;">
+      <% if (errors && errors.email) { %>
+        <span style="color:#fca5a5;"><%= errors.email %></span>
+      <% } %>
+      <br><br>
 
-      <button class="btn btn-primary">Create Account</button>
+      <!-- password -->
+      <label>Password (8–12, Aa1!)</label><br>
+      <input
+        type="password"
+        name="password"
+        style="width:100%; padding:10px; margin-top:5px; margin-bottom:10px;
+               border-radius:5px; border:none;">
+      <% if (errors && errors.password) { %>
+        <span style="color:#fca5a5;"><%= errors.password %></span>
+      <% } %>
+      <br><br>
+
+      <!-- submit -->
+      <button type="submit"
+        style="
+          width:100%;
+          background-color:#22c55e;
+          border:none;
+          padding:12px;
+          border-radius:5px;
+          color:#0f172a;
+          font-weight:bold;
+        ">
+        Create Account
+      </button>
+
     </form>
+
   </div>
-</section>
+
+</body>

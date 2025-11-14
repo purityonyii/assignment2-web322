@@ -1,49 +1,90 @@
-<% /* Rita - login page */ %>
+<% /* Rita - simple login page in my beginner style */ %>
 
-<section class="auth">
+<body style="background-color:#0f172a; color:white; padding:30px;">
 
-    <h1>Log In</h1>
+  <div style="
+      max-width:480px;
+      margin:auto;
+      background-color:#111827;
+      padding:25px;
+      border-radius:10px;
+      border:1px solid #22c55e;
+    ">
 
+    <h1 style="text-align:center; color:#22c55e;">Log In</h1>
+
+    <!-- show form error -->
     <% if (errors && errors.form) { %>
-        <p class="error"><%= errors.form %></p>
+      <p style="color:red; font-weight:bold; text-align:center;">
+        <%= errors.form %>
+      </p>
     <% } %>
 
     <form action="/log-in" method="POST">
 
-        <label>Email:</label><br>
-        <input type="text"
-               name="email"
-               value="<%= values && values.email ? values.email : '' %>">
-        <% if (errors && errors.email) { %>
-            <span class="error"><%= errors.email %></span>
-        <% } %>
-        <br><br>
+      <!-- email -->
+      <label>Email</label><br>
+      <input type="text"
+             name="email"
+             value="<%= values && values.email ? values.email : '' %>"
+             style="width:100%; padding:10px; margin-top:5px; margin-bottom:15px;
+                    border-radius:5px; border:none;">
+      <% if (errors && errors.email) { %>
+        <span style="color:red;"><%= errors.email %></span>
+      <% } %>
+      <br><br>
 
-        <label>Password:</label><br>
-        <input type="password" name="password">
-        <% if (errors && errors.password) { %>
-            <span class="error"><%= errors.password %></span>
-        <% } %>
-        <br><br>
+      <!-- password -->
+      <label>Password</label><br>
+      <input type="password"
+             name="password"
+             style="width:100%; padding:10px; margin-top:5px; margin-bottom:15px;
+                    border-radius:5px; border:none;">
+      <% if (errors && errors.password) { %>
+        <span style="color:red;"><%= errors.password %></span>
+      <% } %>
+      <br><br>
 
-        <label>User Type:</label><br>
-        <label>
-            <input type="radio" name="role" value="customer"
-                <%= (values && values.role === 'customer') ? 'checked' : '' %>>
-            Customer
-        </label><br>
+      <!-- role -->
+      <label>User Type</label><br><br>
 
-        <label>
-            <input type="radio" name="role" value="clerk"
-                <%= (values && values.role === 'clerk') ? 'checked' : '' %>>
-            Data Entry Clerk
-        </label>
-        <% if (errors && errors.role) { %>
-            <span class="error"><%= errors.role %></span>
-        <% } %>
+      <label>
+        <input type="radio" name="role" value="customer"
+          <%= (values && values.role === 'customer') ? 'checked' : '' %>>
+        Customer
+      </label>
+      <br><br>
 
-        <br><br>
-        <button type="submit">Log In</button>
+      <label>
+        <input type="radio" name="role" value="clerk"
+          <%= (values && values.role === 'clerk') ? 'checked' : '' %>>
+        Data Entry Clerk
+      </label>
+
+      <% if (errors && errors.role) { %>
+        <span style="color:red; display:block; margin-top:10px;">
+          <%= errors.role %>
+        </span>
+      <% } %>
+
+      <br><br>
+
+      <!-- submit button -->
+      <button type="submit"
+        style="
+          width:100%;
+          background-color:#22c55e;
+          border:none;
+          padding:12px;
+          border-radius:5px;
+          color:#0f172a;
+          font-weight:bold;
+        ">
+        Log In
+      </button>
 
     </form>
-</section>
+
+  </div>
+
+</body>
